@@ -10,19 +10,7 @@ public class Person {
 
     public Person(){}
 
-    public Person(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public Person(String name, String email, ArrayList<Education> educations, ArrayList<Job> jobs, ArrayList<Skill> skills) {
-        this.name = name;
-        this.email = email;
-        this.educations = educations;
-        this.jobs = new ArrayList<>();
-        this.skills = new ArrayList<>();
-    }
-
+    //method to assemble name and email into a string
     public String personString(){
         String ps = getName().toUpperCase() + "\n" + getEmail() + "\n\n";
         return ps;

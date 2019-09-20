@@ -9,16 +9,11 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(String skillName, String proficiency, ArrayList<Skill> skills) {
-        this.skillName = skillName;
-        this.proficiency = proficiency;
-        this.skills = new ArrayList<>();
-    }
-
-    public String skillString(){
-        String ss = "SKILLS\n";
-        for(Skill skill : getSkills()){
-            ss += getSkillName() + ", " + getProficiency() + "\n";
+    //method to assemble skills info into a string
+    public String skillString(ArrayList<Skill> skills){
+        String ss = "SKILLS\n\n";
+        for(int i = 0; i < skills.size(); i++){
+            ss += skills.get(i).getSkillName() + ", " + skills.get(i).getProficiency() + "\n";
         }
         ss += "\n";
         return ss;

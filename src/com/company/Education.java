@@ -10,18 +10,12 @@ public class Education {
 
     public Education(){}
 
-    public Education (String degree, String major, String university, int gradYear){
-        this.degree = degree;
-        this.major = major;
-        this.university = university;
-        this.gradYear = gradYear;
-        this.educations = new ArrayList<>();
-    }
-
+    //method to assemble education info into a string
     public String educationString(ArrayList<Education> educations){
-        String es = "EDUCATION\n";
-        for(Education education : getEducations()){
-            es += getUniversity() + " (" + getDegree() + " in " + getMajor() + ", " + getGradYear() + ")\n\n";
+        String es = "EDUCATION\n\n";
+        for(int i = 0; i < educations.size(); i++){
+            es += educations.get(i).getUniversity() + " (" + educations.get(i).getDegree() + " in " +
+                educations.get(i).getMajor() + ", " + educations.get(i).getGradYear() + ")\n\n";
         }
         es += "\n";
         return es;

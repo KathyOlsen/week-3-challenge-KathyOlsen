@@ -11,20 +11,13 @@ public class Job {
 
     public Job(){}
 
-    public Job(String company, String jobTitle, String startDate, String endDate, String jobDescription){
-        this.company = company;
-        this.jobTitle = jobTitle;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.jobDescription = jobDescription;
-        this.jobs = new ArrayList<>();
-    }
-
-    public String jobString(){
-        String js = "WORK EXPERIENCE\n";
-        for(Job job : getJobs()){
-            js += getJobTitle() + ", " + getCompany().toUpperCase() + "\n" + getStartDate() + " - " + getEndDate() +
-                    "\n\t- " + getJobDescription() + "\n\n";
+    //method to assemble work info into a string
+    public String jobString(ArrayList<Job> jobs){
+        String js = "WORK EXPERIENCE\n\n";
+        for(int i = 0; i < jobs.size(); i++){
+            js += jobs.get(i).getJobTitle() + ", " + jobs.get(i).getCompany().toUpperCase() + "\n"
+                    + jobs.get(i).getStartDate() + " - " + jobs.get(i).getEndDate() + "\n  - "
+                    + jobs.get(i).getJobDescription() + "\n\n";
         }
         js += "\n";
         return js;

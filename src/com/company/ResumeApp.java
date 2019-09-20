@@ -10,11 +10,11 @@ public class ResumeApp {
         Education education = new Education();
         Job job = new Job();
         Skill skill = new Skill();
-        ArrayList<Education> educations = new ArrayList<>();
-        ArrayList<Job> jobs = new ArrayList<>();
-        ArrayList<Skill> skills = new ArrayList<>();
+        ArrayList<Education> eds = new ArrayList<>();
+        ArrayList<Job> jbs = new ArrayList<>();
+        ArrayList<Skill> sks = new ArrayList<>();
 
-
+        //greeting, request name and email
         System.out.println("Welcome to Robo Resume Builder. I will ask you for a variety of information. " +
                 "\nPlease enter all words (apart from Job Descriptions and email) with Initial Caps.");
         System.out.println("Please enter your name as you wish it to appear on your resume: ");
@@ -22,6 +22,7 @@ public class ResumeApp {
         System.out.println("Please enter your email address: ");
         person.setEmail(key.nextLine());
 
+        //request education info and add it to an array list
         String anotherUni = "yes";
         System.out.println("I will now ask you for information on each educational institution you have attended. " +
                 "\nIf you have more than one, please enter the most recent first, then going backwards in time.");
@@ -37,12 +38,13 @@ public class ResumeApp {
             System.out.println("Please enter the year you graduated (e.g., 2005): ");
             e.setGradYear(key.nextInt());
             key.nextLine();
-            educations.add(e);
+            eds.add(e);
             System.out.println("Do you have another educational institution to enter? (yes/no)");
             anotherUni = key.next();
             key.nextLine();
         }
 
+        //request work experience info and add it to an array list
         String anotherJob = "yes";
         System.out.println("Now I will ask you for information on each work experience you have had. " +
                 "\nIf you have more than one, please enter the most recent first, then going backwards in time.");
@@ -58,12 +60,13 @@ public class ResumeApp {
             j.setEndDate(key.nextLine());
             System.out.println("Please enter your job description: ");
             j.setJobDescription(key.nextLine());
-            jobs.add(j);
+            jbs.add(j);
             System.out.println("Do you have another job to enter? (yes/no)");
             anotherJob = key.next();
             key.nextLine();
         }
 
+        //request skills info and add it to an array list
         System.out.println("Now I will ask you for information on each skill you have. " +
                 "\nPlease enter your best or most important skill first, then in decreasing order of priority " +
                 "or proficiency.");
@@ -73,7 +76,7 @@ public class ResumeApp {
             s.setSkillName(key.nextLine());
             System.out.println("Please enter your level of proficiency. (Fundamental/Novice/Intermediate/Advanced/Expert): ");
             s.setProficiency(key.nextLine());
-            skills.add(s);
+            sks.add(s);
         }
         System.out.println("Do you have another skill to enter? (yes/no)");
         String anotherSkill = key.next();
@@ -84,18 +87,20 @@ public class ResumeApp {
             s.setSkillName(key.nextLine());
             System.out.println("Please enter your level of proficiency. (Fundamental/Novice/Intermediate/Advanced/Expert): ");
             s.setProficiency(key.nextLine());
-            skills.add(s);
+            sks.add(s);
             System.out.println("Do you have another skill to enter? (yes/no)");
             anotherSkill = key.next();
             key.nextLine();
         }
 
-        person.setEducations(educations);
-        person.setJobs(jobs);
-        person.setSkills(skills);
+        //add education, work, and skills lists to person list
+        person.setEducations(eds);
+        person.setJobs(jbs);
+        person.setSkills(sks);
 
-        String resume = person.personString() + education.educationString(educations) +
-                job.jobString() + skill.skillString();
+        //assemble and print resume
+        String resume = person.personString() + education.educationString(eds) +
+                job.jobString(jbs) + skill.skillString(sks);
         System.out.println("Here is your resume:\n\n" + resume);
     }
 }
