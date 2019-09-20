@@ -1,3 +1,4 @@
+package com.company;
 import java.util.ArrayList;
 
 public class Person {
@@ -18,12 +19,12 @@ public class Person {
         this.name = name;
         this.email = email;
         this.educations = educations;
-        this.jobs = jobs;
-        this.skills = skills;
+        this.jobs = new ArrayList<>();
+        this.skills = new ArrayList<>();
     }
 
     public String personString(){
-        String ps = name.toUpperCase() + "\n" + email + "\n\n";
+        String ps = getName().toUpperCase() + "\n" + getEmail() + "\n\n";
         return ps;
     }
 

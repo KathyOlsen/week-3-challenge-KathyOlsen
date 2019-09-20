@@ -1,3 +1,4 @@
+package com.company;
 import java.util.ArrayList;
 
 public class Education {
@@ -5,7 +6,7 @@ public class Education {
     private String major;
     private String university;
     private int gradYear;
-    private ArrayList<Education> educations = new ArrayList<>();
+    private ArrayList<Education> educations;
 
     public Education(){}
 
@@ -14,13 +15,13 @@ public class Education {
         this.major = major;
         this.university = university;
         this.gradYear = gradYear;
-        this.educations = educations;
+        this.educations = new ArrayList<>();
     }
 
-    public String educationString(){
+    public String educationString(ArrayList<Education> educations){
         String es = "EDUCATION\n";
-        for(int i = 0; i < educations.size(); i++){
-            es += university + " (" + degree + " in " + major + ", " + gradYear + ")\n\n";
+        for(Education education : getEducations()){
+            es += getUniversity() + " (" + getDegree() + " in " + getMajor() + ", " + getGradYear() + ")\n\n";
         }
         es += "\n";
         return es;

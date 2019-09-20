@@ -1,3 +1,4 @@
+package com.company;
 import java.util.ArrayList;
 
 public class Job {
@@ -6,7 +7,7 @@ public class Job {
     private String startDate;
     private String endDate;
     private String jobDescription;
-    private ArrayList<Job> jobs = new ArrayList<>();
+    private ArrayList<Job> jobs;
 
     public Job(){}
 
@@ -16,14 +17,14 @@ public class Job {
         this.startDate = startDate;
         this.endDate = endDate;
         this.jobDescription = jobDescription;
-        this.jobs = jobs;
+        this.jobs = new ArrayList<>();
     }
 
     public String jobString(){
         String js = "WORK EXPERIENCE\n";
-        for(int i = 0; i < jobs.size(); i++){
-            js += jobTitle + ", " + company.toUpperCase() + "\n" + startDate + " - " + endDate + "\n\t- " + jobDescription
-                    + "\n\n";
+        for(Job job : getJobs()){
+            js += getJobTitle() + ", " + getCompany().toUpperCase() + "\n" + getStartDate() + " - " + getEndDate() +
+                    "\n\t- " + getJobDescription() + "\n\n";
         }
         js += "\n";
         return js;

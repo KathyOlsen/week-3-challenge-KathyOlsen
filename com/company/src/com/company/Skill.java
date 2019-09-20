@@ -1,9 +1,10 @@
+package com.company;
 import java.util.ArrayList;
 
 public class Skill {
     private String skillName;
     private String proficiency;
-    private ArrayList<Skill> skills = new ArrayList<>();
+    private ArrayList<Skill> skills;
 
     public Skill() {
     }
@@ -11,13 +12,13 @@ public class Skill {
     public Skill(String skillName, String proficiency, ArrayList<Skill> skills) {
         this.skillName = skillName;
         this.proficiency = proficiency;
-        this.skills = skills;
+        this.skills = new ArrayList<>();
     }
 
     public String skillString(){
         String ss = "SKILLS\n";
-        for(int i = 0; i < skills.size(); i++){
-            ss += skillName + ", " + proficiency + "\n";
+        for(Skill skill : getSkills()){
+            ss += getSkillName() + ", " + getProficiency() + "\n";
         }
         ss += "\n";
         return ss;

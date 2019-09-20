@@ -1,3 +1,4 @@
+package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,6 +7,9 @@ public class ResumeApp {
         Scanner key = new Scanner(System.in);
 
         Person person = new Person();
+        Education education = new Education();
+        Job job = new Job();
+        Skill skill = new Skill();
         ArrayList<Education> educations = new ArrayList<>();
         ArrayList<Job> jobs = new ArrayList<>();
         ArrayList<Skill> skills = new ArrayList<>();
@@ -22,18 +26,18 @@ public class ResumeApp {
         System.out.println("I will now ask you for information on each educational institution you have attended. " +
                 "\nIf you have more than one, please enter the most recent first, then going backwards in time.");
         while (anotherUni.equalsIgnoreCase("yes")){
-            Education education = new Education();
+            Education e = new Education();
             System.out.println("Please enter the full name of your educational institution (e.g, University of " +
                     "Maryland): ");
-            education.setUniversity(key.nextLine());
+            e.setUniversity(key.nextLine());
             System.out.println("Please enter the degree you received (e.g., B.A.): ");
-            education.setDegree(key.nextLine());
+            e.setDegree(key.nextLine());
             System.out.println("Please enter your major (e.g., Mathematics): ");
-            education.setMajor(key.nextLine());
+            e.setMajor(key.nextLine());
             System.out.println("Please enter the year you graduated (e.g., 2005): ");
-            education.setGradYear(key.nextInt());
+            e.setGradYear(key.nextInt());
             key.nextLine();
-            educations.add(education);
+            educations.add(e);
             System.out.println("Do you have another educational institution to enter? (yes/no)");
             anotherUni = key.next();
             key.nextLine();
@@ -43,18 +47,18 @@ public class ResumeApp {
         System.out.println("Now I will ask you for information on each work experience you have had. " +
                 "\nIf you have more than one, please enter the most recent first, then going backwards in time.");
         while (anotherJob.equalsIgnoreCase("yes")){
-            Job job = new Job();
+            Job j = new Job();
             System.out.println("Please enter the full name of the organization (e.g, Smith Industries): ");
-            job.setCompany(key.nextLine());
+            j.setCompany(key.nextLine());
             System.out.println("Please enter your job title (e.g., Program Manager): ");
-            job.setJobTitle(key.nextLine());
+            j.setJobTitle(key.nextLine());
             System.out.println("Please enter your start date (e.g., January 2015): ");
-            job.setStartDate(key.nextLine());
+            j.setStartDate(key.nextLine());
             System.out.println("Please enter your end date (e.g., March 2019 or Current): ");
-            job.setEndDate(key.nextLine());
+            j.setEndDate(key.nextLine());
             System.out.println("Please enter your job description: ");
-            job.setJobDescription(key.nextLine());
-            jobs.add(job);
+            j.setJobDescription(key.nextLine());
+            jobs.add(j);
             System.out.println("Do you have another job to enter? (yes/no)");
             anotherJob = key.next();
             key.nextLine();
@@ -64,23 +68,23 @@ public class ResumeApp {
                 "\nPlease enter your best or most important skill first, then in decreasing order of priority " +
                 "or proficiency.");
         for(int i = 0; i < 3; i++) {
-            Skill skill = new Skill();
+            Skill s = new Skill();
             System.out.println("Please enter a skill (e.g, Java): ");
-            skill.setSkillName(key.nextLine());
+            s.setSkillName(key.nextLine());
             System.out.println("Please enter your level of proficiency. (Fundamental/Novice/Intermediate/Advanced/Expert): ");
-            skill.setProficiency(key.nextLine());
-            skills.add(skill);
+            s.setProficiency(key.nextLine());
+            skills.add(s);
         }
         System.out.println("Do you have another skill to enter? (yes/no)");
         String anotherSkill = key.next();
         key.nextLine();
         while (anotherSkill.equalsIgnoreCase("yes")){
-            Skill skill = new Skill();
+            Skill s = new Skill();
             System.out.println("Please enter a skill (e.g, Java): ");
-            skill.setSkillName(key.nextLine());
+            s.setSkillName(key.nextLine());
             System.out.println("Please enter your level of proficiency. (Fundamental/Novice/Intermediate/Advanced/Expert): ");
-            skill.setProficiency(key.nextLine());
-            skills.add(skill);
+            s.setProficiency(key.nextLine());
+            skills.add(s);
             System.out.println("Do you have another skill to enter? (yes/no)");
             anotherSkill = key.next();
             key.nextLine();
@@ -90,8 +94,8 @@ public class ResumeApp {
         person.setJobs(jobs);
         person.setSkills(skills);
 
-        String resume = person.personString() + person.educations.educationString() + person.jobs.jobString() + person.skills.skillString();
+        String resume = person.personString() + education.educationString(educations) +
+                job.jobString() + skill.skillString();
         System.out.println("Here is your resume:\n\n" + resume);
     }
-
 }
